@@ -1,0 +1,17 @@
+{% extends "guestbook/base.html" %}
+
+{% block title %}Connect a database{% endblock %}
+
+{% block content %}
+  <h1>Connect a database</h1>
+  <p class="sub">This app keeps its guestbook in Postgres, and no database is bound to it yet.</p>
+  <ol class="steps">
+    <li><strong>Create a managed Postgres</strong> from the Databases page, or run
+      <code>velixir db create</code>.</li>
+    <li><strong>Bind it to this app</strong> as <code>DATABASE_URL</code>: on the database's page
+      under Bound apps, or <code>velixir db bind &lt;database-id&gt; --app &lt;app-id&gt;</code>.</li>
+    <li><strong>Redeploy</strong> with the Redeploy button on the live release (Deploys tab).
+      The tables are created on the next boot.</li>
+  </ol>
+  <p class="note">Deploying this template from the velixir gallery does all three for you.</p>
+{% endblock %}

@@ -1,0 +1,11 @@
+# The app's own dependencies.
+Django==5.2.17
+gunicorn==26.2.0
+whitenoise==6.12.0
+dj-database-url==3.1.2
+psycopg[binary]==3.3.6
+
+# What those pull in, pinned as well, so a build next year installs exactly what was tested
+# rather than whatever happens to be newest that day.
+asgiref==3.12.1
+sqlparse==0.6.0

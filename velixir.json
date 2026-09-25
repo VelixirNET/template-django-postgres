@@ -1,0 +1,14 @@
+{
+  "name": "Django + Postgres",
+  "tagline": "A Django guestbook with the admin, on managed Postgres.",
+  "description": "A real Django 5.2 project, live on its own URL in minutes: a guestbook with a model, a form and the Django admin, served by gunicorn with its static files built into the image. Settings come from the environment, migrations run on start and wait for the database instead of crashing, and the secret key takes care of itself. Deploying it creates a managed Postgres and connects it for you.",
+  "language": "Python",
+  "runtimeVersion": "3.13",
+  "accent": "#44B78B",
+  "tags": ["Managed Postgres", "Django", "Admin"],
+  "topics": ["python", "django", "postgres", "gunicorn", "whitenoise"],
+  "minMemoryMb": 256,
+  "services": {
+    "postgres": { "env": "DATABASE_URL" }
+  }
+}

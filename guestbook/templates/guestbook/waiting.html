@@ -1,0 +1,10 @@
+{% extends "guestbook/base.html" %}
+
+{% block title %}Waiting for the database{% endblock %}
+
+{% block content %}
+  <h1>Waiting for the database</h1>
+  <p class="sub">The app is running and retrying the connection every few seconds. The app log says why it cannot connect.</p>
+  {# The driver's error stays in the log: it can name the database's internal address and user, which is nobody else's business. #}
+  <p class="note">If the database password was rotated, redeploy the app to pick up the new one.</p>
+{% endblock %}

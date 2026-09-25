@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+# collectstatic output. The build makes its own.
+staticfiles/

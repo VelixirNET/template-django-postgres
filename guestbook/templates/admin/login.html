@@ -1,0 +1,16 @@
+{% extends "admin/login.html" %}
+{% comment %}
+  Django's own admin login page, plus a hint on a fresh deploy, where nobody can sign in yet.
+  guestbook sits above django.contrib.admin in INSTALLED_APPS, so this file is found first,
+  and the extends above still reaches the original.
+{% endcomment %}
+
+{% block content %}
+  {% if no_admin_yet %}
+    <ul class="messagelist">
+      <li class="warning">There is no admin account yet. Set <code>DJANGO_SUPERUSER_USERNAME</code>
+        and <code>DJANGO_SUPERUSER_PASSWORD</code> on the app's Environment tab, then redeploy.</li>
+    </ul>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}

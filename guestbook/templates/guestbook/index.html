@@ -1,0 +1,30 @@
+{% extends "guestbook/base.html" %}
+
+{% block content %}
+  <h1>Guestbook</h1>
+  <p class="sub">Stored in managed Postgres, reached through <code>DATABASE_URL</code>.</p>
+
+  {% for message in messages %}<p class="flash">{{ message }}</p>{% endfor %}
+
+  <form class="sign" method="post" action="{% url 'index' %}">
+    {% csrf_token %}
+    {{ form.name }}
+    {{ form.name.errors }}
+    {{ form.message }}
+    {{ form.message.errors }}
+    <button type="submit">Sign the guestbook</button>
+  </form>
+
+  {% comment %}Everything here is visitor input. Django escapes it on the way out.{% endcomment %}
+  <ul class="entries">
+    {% for entry in entries %}
+      <li>
+        <p class="who">{{ entry.name }}</p>
+        <p>{{ entry.message|linebreaksbr }}</p>
+        <time datetime="{{ entry.created_at|date:'c' }}">{{ entry.created_at|date:'Y-m-d H:i' }} UTC</time>
+      </li>
+    {% empty %}
+      <li class="empty">Nobody has signed yet. Be the first.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+# The start command is in the Procfile. This file adds one build step.
+#
+# collectstatic runs at build time, so the image ships with every static file already
+# fingerprinted and compressed, and starting the app does no work for them. The build has no
+# DATABASE_URL and no secrets, and collectstatic needs neither: without them, settings.py
+# falls back to setup mode.
+[phases.build]
+cmds = ["python manage.py collectstatic --noinput"]

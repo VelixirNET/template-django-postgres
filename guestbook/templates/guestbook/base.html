@@ -1,0 +1,49 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Guestbook{% endblock %}</title>
+<link rel="icon" href="{% static 'guestbook/favicon.svg' %}" type="image/svg+xml">
+{% comment %}
+  The stylesheet is inline rather than a static file because start.py serves the waiting
+  page before Django is up, with no static files to hand, and it should still look like the
+  rest of the app. The favicon above goes through {% static %} like any other asset.
+{% endcomment %}
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; background:#0b0b10; color:#e8e8ef;
+         font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif; }
+  .wrap { max-width:38rem; margin:0 auto; padding:3rem 1.25rem 4rem; }
+  h1 { font-size:1.5rem; margin:0 0 .25rem; letter-spacing:-.02em; }
+  .sub { color:#7a7a8c; font-size:.8125rem; margin:0 0 2rem; }
+  code { background:#16161f; border:1px solid #26263a; border-radius:5px;
+         padding:.1rem .35rem; color:#c7d2fe; font-size:.8125rem; overflow-wrap:anywhere; }
+  form.sign { display:grid; gap:.5rem; margin-bottom:2rem; }
+  input[type=text], textarea { width:100%; padding:.7rem .85rem; border-radius:8px; background:#13131c;
+                               border:1px solid #26263a; color:#e8e8ef; font:inherit; resize:vertical; }
+  input[type=text]:focus, textarea:focus { outline:none; border-color:#6366f1; }
+  button { justify-self:start; padding:.7rem 1.1rem; border-radius:8px; border:0; background:#6366f1;
+           color:#fff; font:inherit; font-weight:600; cursor:pointer; }
+  .errorlist { list-style:none; margin:0; padding:0; color:#fca5a5; font-size:.8125rem; }
+  .flash { margin:0 0 1.5rem; padding:.6rem .85rem; border-radius:8px; border:1px solid #1d3b2c;
+           background:#0f1d16; color:#86efac; font-size:.875rem; }
+  ul.entries { list-style:none; margin:0; padding:0; }
+  ul.entries li { border:1px solid #1f1f2e; border-radius:10px; padding:.875rem 1rem; margin-bottom:.5rem; }
+  ul.entries li p { margin:0; overflow-wrap:anywhere; }
+  ul.entries .who { font-weight:600; }
+  ul.entries time { color:#4b4b5c; font-size:.75rem; font-variant-numeric:tabular-nums; }
+  ul.entries li.empty { color:#4b4b5c; text-align:center; border-style:dashed; }
+  ol.steps { padding-left:1.25rem; margin:0 0 1.5rem; }
+  ol.steps li { margin-bottom:.9rem; }
+  .note { color:#7a7a8c; font-size:.8125rem; }
+  footer { color:#4b4b5c; font-size:.75rem; margin-top:2.5rem; text-align:center; }
+  footer a { color:#7a7a8c; }
+</style>
+<div class="wrap">
+  {% block content %}{% endblock %}
+  <footer>
+    <a href="/admin/">Admin</a> &middot; running on <a href="https://velixir.net">velixir</a>
+  </footer>
+</div>
+</html>
