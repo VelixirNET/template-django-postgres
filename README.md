@@ -115,10 +115,11 @@ because the derived key changes with it.
 out, old and new code briefly share the database, so keep each migration compatible with the
 code before it: add a column in one deploy, start relying on it in the next.
 
-**The certificate is not verified.** The connection is encrypted, but `sslmode=require` does
-not check who issued the certificate, which matches what it means everywhere else. The traffic
-never leaves velixir's private network, and the platform CA is not published, so there is
-nothing to pin yet.
+**The certificate is not verified by default.** The connection is encrypted, but `sslmode=require` does
+not check who issued the certificate, which matches what it means everywhere else. To verify the
+server as well, download your database's CA certificate from its page in the velixir dashboard
+and connect with `sslmode=verify-full`. See
+https://velixir.net/docs/databases#verifying-the-server-certificate.
 
 **The Free plan sleeps.** After 15 idle minutes the app stops, and the next visit wakes it.
 That first request takes a few seconds while Django starts and checks its migrations.
